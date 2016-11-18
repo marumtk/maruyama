@@ -1,0 +1,197 @@
+#Camera Information Header
+Date : 2016/10/23
+Time : 17:48
+Camera Type : IDP-Express R2000
+Head Type : IDP-Express Color
+Camera ID : 0
+Camera Number : 0
+Head Number : 1
+Max Head Number : 2
+Scene Name : 
+User Defined Camera Name : 
+Session Number : 
+Date Record : Unknown
+Time Record : Unknown
+Trigger Time : 0
+Record Rate(fps) : 1000
+Shutter Speed(s) : 1/1000
+Trigger Mode : Start
+Gain Level: 1
+Color Temperature : 5100K
+Color Balance R : 1024
+Color Balance G : 1037
+Color Balance B : 1376
+Color Balance Base : 1024
+Color Balance Max : 4095
+Original Total Frame : 2372
+Total Frame : 2372
+Start Frame : 0
+Correct Trigger Frame : 0
+Save Step : 1
+Image Width : 512
+Image Height : 512
+Color Type : Color
+Color Bit : 24
+File Format : Wmv
+EffectiveBit Depth : 8
+EffectiveBit Side : Higher
+Partition Number: 1
+Total Missing Frame : 788
+Missing Frame List Size : 185
+Missing Frame List Frame : 12 24 36 48 60 72 84 96 108 120 132 144 156 168 180 204 216 228 240 252 264 276 288 300 312 324 336 348 360 372 396 408 420 432 444 456 468 480 492 504 516 528 540 552 564 588 600 612 624 636 648 660 672 684 696 708 720 732 744 756 780 792 804 816 828 840 852 864 876 888 900 912 924 936 948 972 984 996 1008 1020 1032 1044 1056 1068 1080 1092 1104 1116 1128 1140 1164 1176 1188 1200 1212 1224 1236 1248 1260 1272 1284 1296 1308 1320 1332 1356 1368 1380 1392 1404 1416 1428 1440 1452 1464 1476 1488 1500 1512 1524 1548 1560 1572 1584 1596 1608 1620 1632 1644 1656 1668 1680 1692 1704 1716 1740 1752 1764 1776 1788 1800 1812 1824 1836 1848 1860 1872 1884 1896 1908 1932 1944 1956 1968 1980 1992 2004 2016 2028 2040 2052 2064 2076 2088 2100 2124 2136 2148 2160 2172 2184 2196 2208 2220 2232 2244 2256 2268 2280 2292 2316 2328 2340 2352 2364
+Missing Frame List Count : 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+Digits Of File Number : 6
+Device Last Error : -1:0xffffffff
+Comment Text : 
+Zero Frame : Exist
+Shutter Type2(nsec) : 998214
+Edge Enhance : 0
+Color Matrix R : 1357:432:-766
+Color Matrix G : -277:2344:-1042
+Color Matrix B : -190:-183:1398
+Color Enhance : 0
+Pre LUT Mode : DEF1
+Pre LUT Brightness : 0
+Pre LUT Contrast : 0
+Pre LUT Gain : 1.0
+Pre LUT Gamma : 1.00
+Pre LUT PosiNega : Posi
+Scale Method : 0
+Scale Grid Space : 10
+Scale Pixel Size : 1.0000
+Scale Unit : 0
+Scale Magnification : 1.0000
+Scale Ruler : 10
+Scale Distance : 1.0000
+Scale 2Points Distance : 1.0000
+Polarization : 0
+Pola Config : 0
+Pola Save Kind : 0
+Pola Save Comment : 
+Time Code Type : 0
+Time Code Display Unit : 
+Time Code Per Frames : 0.000000
+Time Code Unit Reset : 0.000000
+Time Code Reset : 0
+Current Time Decimal Place : 0
+Current Time Max Display Unit : 0
+Current Time Decimal Divide : 0
+Not Use : 
+Not Use : 
+Not Use : 
+
+#Photron Fastcam Viewer Version Information (Resave):
+Saved Date : 2016/10/23
+Saved Time : 20:56
+PFV.exe : 3, 5, 4, 1
+1024PCIInst.exe : 1.1.0.0
+512PCIInst.exe : 1.1.0.0
+node.exe : 0.10.26
+D1024PCI.dll : 1, 0, 3, 3
+D512PCI.dll : 1, 0, 2, 2
+DAPX.dll : 1, 0, 2, 5
+DAPXRS.dll : 1, 0, 4, 4
+DBC2.dll : 1, 0, 2, 1
+DIDPEX.dll : 1, 1, 0, 0
+DMC1.dll : 1, 0, 3, 8
+DMH4.dll : 1, 0, 4, 0
+DSA1.dll : 1, 1, 0, 1
+DSA2.dll : 1, 0, 5, 3
+DSA3.dll : 1, 0, 6, 0
+DSA4.dll : 1, 1, 0, 1
+DSA5.dll : 1, 1, 0, 1
+DSA6.dll : 1, 0, 1, 5
+DSA7.dll : 1, 0, 2, 7
+DSA8.dll : 1, 0, 3, 5
+DSAX.dll : 1, 0, 2, 1
+DSAX_B.dll : 1, 2, 0, 1
+DSAZ.dll : 1, 1, 0, 1
+DTX.dll : 1, 1, 0, 0
+DUL512.dll : 1, 0, 2, 6
+DUX.dll : 1, 1, 0, 0
+DUX50.dll : 1, 1, 0, 0
+DWX.dll : 1, 1, 0, 3
+DWX50.dll : 1, 1, 0, 3
+FSDCTRL.dll : 1, 0, 0, 7
+GEthLib.dll : 0, 1, 3, 4
+I1394.dll : 1, 0, 0, 7
+IGETHER.dll : 1, 0, 3, 5
+ijl20.dll : 2,0,18,50
+IOPTICAL.dll : 1, 0, 0, 6
+IPCI.dll : 1, 0, 0, 9
+ippcce9-6.1.dll : 6,1,137,734
+ippccem64t-6.1.dll : 6,1,137,734
+ippccm7-6.1.dll : 6,1,137,734
+ippccmx-6.1.dll : 6,1,137,734
+ippccn8-6.1.dll : 6,1,137,734
+ippccu8-6.1.dll : 6,1,137,734
+ippccy8-6.1.dll : 6,1,137,734
+ippcoreem64t-6.1.dll : 6,1,137,790
+ippcve9-6.1.dll : 6,1,137,811
+ippcvem64t-6.1.dll : 6,1,137,811
+ippcvm7-6.1.dll : 6,1,137,811
+ippcvmx-6.1.dll : 6,1,137,811
+ippcvn8-6.1.dll : 6,1,137,811
+ippcvu8-6.1.dll : 6,1,137,811
+ippcvy8-6.1.dll : 6,1,137,811
+ippie9-6.1.dll : 6,1,137,825
+ippiem64t-6.1.dll : 6,1,137,825
+ippim7-6.1.dll : 6,1,137,825
+ippimx-6.1.dll : 6,1,137,825
+ippin8-6.1.dll : 6,1,137,825
+ippiu8-6.1.dll : 6,1,137,825
+ippiy8-6.1.dll : 6,1,137,825
+ippje9-6.1.dll : 6,1,137,803
+ippjem64t-6.1.dll : 6,1,137,803
+ippjm7-6.1.dll : 6,1,137,803
+ippjmx-6.1.dll : 6,1,137,803
+ippjn8-6.1.dll : 6,1,137,803
+ippju8-6.1.dll : 6,1,137,803
+ippjy8-6.1.dll : 6,1,137,803
+ippsce9-6.1.dll : 6,1,137,798
+ippscem64t-6.1.dll : 6,1,137,798
+ippscm7-6.1.dll : 6,1,137,798
+ippscmx-6.1.dll : 6,1,137,798
+ippscn8-6.1.dll : 6,1,137,798
+ippscu8-6.1.dll : 6,1,137,798
+ippscy8-6.1.dll : 6,1,137,798
+ippse9-6.1.dll : 6,1,137,827
+ippsem64t-6.1.dll : 6,1,137,827
+ippsm7-6.1.dll : 6,1,137,827
+ippsmx-6.1.dll : 6,1,137,827
+ippsn8-6.1.dll : 6,1,137,827
+libguide40.dll : 20071022
+libiomp5md.dll : 20071022
+libpng12.dll : ???
+libpng13.dll : 1.2.10
+PDCLIB.dll : 1, 4, 0, 3
+PDCPOLA.dll : 1, 0, 1, 0
+PICLIB.dll : 1, 1, 0, 4
+PluginCamera.dll : 1.5.4.1
+PluginDataSave.dll : 1.5.4.1
+PluginFileView.dll : 1.5.4.1
+zlib.dll : 1.2.7
+zlib1.dll : 1.2.3
+PluginAngle.pdll : 1.1.9.7
+PluginBatchDataConverter.pdll : 1.0.0.4
+PluginComm.pdll : 1.0.1.1
+PluginCycleView.pdll : 1, 0, 0, 2
+PluginDistance.pdll : 1.1.9.5
+PluginHDR.pdll : 1, 0, 0, 3
+PluginHistogram.pdll : 1, 0, 5, 5
+PluginLEDLaserControl.pdll : 1.0.0.0
+PluginLensControl.pdll : 1, 0, 4, 0
+PluginLineProfile.pdll : 1, 0, 2, 7
+PluginMobileServer.pdll : 1, 0, 0, 0
+PluginMotionDetector.pdll : 1, 0, 0, 2
+PluginPIVFocusMode.pdll : 1, 0, 0, 2
+PluginPolarization.pdll : 1.0.0.7
+PluginPseudoColor.pdll : 1, 0, 0, 4
+
+#System Information:
+OS : Windows 7 Professional (x64) Service Pack 1  (version 6.1 Build 7601)
+Memory : 65493MB RAM
+Processor :       Intel(R) Xeon(R) CPU E5-2687W 0 @ 3.10GHz
+DirectX : DirectX 11
+
+END
