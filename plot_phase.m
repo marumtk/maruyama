@@ -1,11 +1,11 @@
 %取得したい画像があるフォルダ名を入力する
 %位相の回帰係数，各ピクセルの位相，x方向の位相の微分を出力
-function [p,theta,differ,line_out,name] = plot_phase(name,line_out)
+function [p,theta,differ,line_out,name,gap] = plot_phase(name,line_out)
     close all;
     %%%%%%%%%%
     %%%%%%%%%%
     
-    folder_name = 'C:\Users\t2ladmin\Documents\MATLAB\phase shift\phase_image';
+    folder_name = 'C:\Users\t2ladmin\Documents\MATLAB\phase\phase_image';
     file_name = [folder_name, '\', name];
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%フォルダ内に移動し，画像のみを読み込み
@@ -65,38 +65,54 @@ function [p,theta,differ,line_out,name] = plot_phase(name,line_out)
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%位相の微分に着目
     differ = zeros(image_height,image_width-1); %thetaの差（x方向の微分）を格納
+    gap = zeros(image_height,1); %位相ジャンプのジャンプ幅の平均
+    
     p = zeros(image_height,2); %thetaの微分の回帰を行ごとに格納
+    
+    
     for line = 1:image_height
         %位相の空間方向の微分を計算
         differ(line,:) = diff(theta(line,:));
-    
+        
+        %位相のギャップの大きさの平均を計算
+        number = find(differ(line,:)<-5);
+        if isempty(number)==0
+            for k = 1:length(number)
+                gap(line,1) = gap(line,1) + differ(line,number(k));
+            end
+            gap(line,1) = abs(gap(line,1)/length(number));
+        else
+            gap(line,1) = 0;
+        end
+       
+       
         %外れ値を除外し，位相の微分を線形近似
         differ_temp = zeros(2,image_width-1);
         num = 1;
         for i = 1:image_width-1
-            if differ(line,i)>0 && differ(line,i)<0.3 
+            if differ(line,i)>0 && differ(line,i)<0.5
                 differ_temp(1,num) = i;
                 differ_temp(2,num) = differ(line,i);
                 num = num+1;
             end
         end
-        p(line,:) = polyfit(differ_temp(1,1:num-1),differ_temp(2,1:num-1),1);
+        p(line,:) = polyfit(differ_temp(1,1:num-1),differ_temp(2,1:num-1),1); 
     end
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%位相の微分の計算と回帰終了
     
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%ある行についての位相や輝度をプロットする
     %%line_out = 150;
-    %位相のプロット
+    %位相のプロット グラフ1
     figure;
     plot(1:image_width,theta(line_out,:));
     title('位相','FontSize',16);
     xlim([0,image_width]);
     ylim([-pi,pi]);
     set(gca,'FontSize',16);
-    saveas(gcf,'phase.fig')
+    saveas(gcf,['phase_',num2str(line_out),'.fig'])
     
-    %位相の空間方向の微分をプロット
+    %位相の空間方向の微分をプロット グラフ2
     figure;
     plot(1:image_width-1,differ(line_out,:));
     hold on
@@ -105,9 +121,9 @@ function [p,theta,differ,line_out,name] = plot_phase(name,line_out)
     xlim([0,image_width]);
     ylim([-0.5,0.5]);
     set(gca,'FontSize',16);
-    saveas(gcf,'derivative.fig')
+    saveas(gcf,['derivative_',num2str(line_out),'.fig'])
     
-    %輝度をプロット，sin波になってればOK
+    %輝度をプロット，sin波になってればOK グラフ3
     figure;
     sin_wave = reshape(Luminance(2,:), [image_height image_width]);
     plot(1:image_width,sin_wave(line_out,:));
@@ -115,12 +131,12 @@ function [p,theta,differ,line_out,name] = plot_phase(name,line_out)
     xlim([0,image_width]);
     ylim([0,256]);
     set(gca,'FontSize',16);
-    saveas(gcf,'I.fig')
+    saveas(gcf,['I_',num2str(line_out),'.fig'])
   
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%実際の位相復元画像を表示．不要な場合は以下をコメントアウト
+    %%%グラフ4
     figure;
-    %白くなるほど位相が2piに近づく
     theta_lim = [-pi pi];
     imagesc(theta,theta_lim);
     colorbar;
@@ -131,5 +147,5 @@ function [p,theta,differ,line_out,name] = plot_phase(name,line_out)
     saveas(gcf,'phasemap.fig')
     
     %%元のディレクトリに戻る
-    cd('C:\Users\t2ladmin\Documents\MATLAB\phase shift');
+    cd('C:\Users\t2ladmin\Documents\MATLAB\phase');
 end

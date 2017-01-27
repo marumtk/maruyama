@@ -7,9 +7,9 @@ function make_image(T)
         %A(:,t)= (1+sin(pi/num*t))/2;
         %B(:,t)= (1+sin(pi/num*t+pi*2/3))/2;
         %C(:,t)= (1+sin(pi/num*t+pi*4/3))/2;
-        A(:,t)= (1+sin(pi*t^2/65536))/2;
-        B(:,t)= (1+sin(pi*t^2/65536 + 2*pi/3))/2;
-        C(:,t)= (1+sin(pi*t^2/65536 + 4*pi/3))/2;
+        A(:,t)= (1+sin(pi*t^2/100000))/2;
+        B(:,t)= (1+sin(pi*t^2/100000 + 2*pi/3))/2;
+        C(:,t)= (1+sin(pi*t^2/100000 + 4*pi/3))/2;
         %A(:,t)= (1+cos(pi*(t-512)^2/40000))/2;
         %B(:,t)= (1+cos(pi*(t-512)^2/40000 + 2*pi/3))/2;
         %C(:,t)= (1+cos(pi*(t-512)^2/40000 + 4*pi/3))/2;
@@ -18,5 +18,5 @@ function make_image(T)
     imwrite(A,sprintf(str,1));
     imwrite(B,sprintf(str,2));
     imwrite(C,sprintf(str,3)); 
-    imshow((A+B)/2);
+    imshow(A);
 end
