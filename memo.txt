@@ -1,0 +1,10 @@
+phase_unwrapping_old:ただ微分情報の平均をとっただけ
+
+phase_unwrapping_test:最新のコード
+微分の平均を求める際に
+・ピクセル数が少ない行を除去→微分情報を行ごとにメディアンフィルタにかける→端を除去
+→残った行の間は同じ微分情報を適用
+
+phase_unwrapping_zyuraiというコードを別に生成．単純連結法による実験をするときはこのスクリプトを実行しましょう！
+
+plot_phase_old:sgolayfiltによって微分情報をフィルタリング
