@@ -16,7 +16,7 @@ function make_image()
         %C(:,t)= (1+sin(pi*(t-512)^2/40000 + 2*pi/3))/2;
     end
     D = ones(768,1024)*0.5;
-    str = 'sinimage_%d.tif';
+    str = 'sinimage_%d.bmp';
     imwrite(A,sprintf(str,1));
     imwrite(B,sprintf(str,2));
     imwrite(C,sprintf(str,3)); 

@@ -1,12 +1,13 @@
-[p_old,theta,differ,line_out,name] = plot_phase_old('\1220\hand_proposed',350);
+[p_old,theta,differ,line_out,name] = plot_phase_old('\223plane_3',150);
 [image_height,image_width] = size(theta);
 unwrapped_phase_temp = zeros(image_height,image_width);
 phase_0 = zeros(image_height,1); %位相の微分が0となる点を推定
 p = zeros(image_height,2); %平均微分情報を格納
-medfilt = [10 10];
+proj_height = 768;
+proj_width = 1024;
 
 
-folder_name = 'C:\Users\t2ladmin\Documents\MATLAB\phase shift\phase_image';
+folder_name = 'C:\Users\k2vision\Desktop\maruyama\3d_measurement\phase_image';
 file_name = [folder_name, '\', name];
 cd(file_name);
 
@@ -14,7 +15,7 @@ cd(file_name);
 temp_p1= p_old(:,1);
 A = find(temp_p1<=0);
 temp_p = p_old;
-Ind = 1:768; %%生成した1024*768の画像を用いる時はIndも中身も変わる
+Ind = 1:proj_height; %%生成した1024*768の画像を用いる時はIndも中身も変わる
 
 %%生の画像データを用いる時は以下をコメントアウト
 %外れ値除去
@@ -23,7 +24,7 @@ for i = 1:length(A)
 end
 
 %%ピクセル数が少ない行を除去
-for i = 1:512
+for i = 1:image_height
     Temp = find(theta(i,:)~=-10);
     if length(Temp) < 50
         temp_p(i,:) = [NaN,NaN];
@@ -31,7 +32,7 @@ for i = 1:512
 end
 Ind = find(isnan(temp_p(:,1))==0); %値が入っている行を格納
 temp_p(isnan(temp_p)==1)=[];
-temp_p = reshape(temp_p,[length(temp_p)/2 2]);
+%temp_p = reshape(temp_p,[length(temp_p)/2 2]);
 
 %端を除去
 exception = ceil(length(temp_p)*0.1);
@@ -78,7 +79,7 @@ end
 %p = horzcat(0.0007*ones(image_height,1),-0.0926*ones(image_height,1));
 
 %%%%%%%%%%%%%%%%%位相の微分情報をプロット
-%グラフ4
+%グラフ5
 figure;
 plot(1:image_width-1,differ(line_out,:));
 hold on
@@ -111,16 +112,18 @@ temp_map = unwrapped_phase_temp-theta;
 temp_out = temp_map/(2*pi);
 index = round(temp_out); %位相接続の際のインデックスを格納
 unwrapped_phase = index*2*pi + theta; %絶対位相を格納
-unwrapped_phase = medfilt2(unwrapped_phase,medfilt);
-unwrapped_phase(unwrapped_phase==-10) = NaN;
+unwrapped_phase(unwrapped_phase_temp==-10)=10000;
 %プロジェクタとの対応をとる
-pixel = 200*sqrt(abs(unwrapped_phase));
+pixel = 100*sqrt(abs(unwrapped_phase));
+pixel = medfilt2(pixel,[10 10]);
+pixel(pixel>proj_width)=NaN;
+pixel(unwrapped_phase<0)=NaN;
 %誤差が大きいときは二次関数を利用
 %pixel_temp = 200*sqrt(abs(unwrapped_phase_temp));
 %pixel(abs(pixel_temp-pixel)>1) = pixel_temp(abs(pixel_temp-pixel)>1);
 
 %%%%%%%%%%%%%%%%%%%%%二次関数をプロット
-%%グラフ5
+%%グラフ6
 figure;
 plot(1:image_width,theta(line_out,:));
 hold on;
@@ -130,27 +133,25 @@ xlim([0,image_width]);
 set(gca,'FontSize',16);
 saveas(gcf,['wrap_and_unwrap_',num2str(line_out),'.fig'])
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%絶対位相をプロット
-%%グラフ6
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%対応するプロジェクタのピクセルをプロット
+%%グラフ7
 figure;
-pixel_lim = [0 1024];
-%pixel = medfilt2(pixel, medfilt);
+pixel_lim = [0 proj_width];
 imagesc(pixel,pixel_lim);
 colorbar;
 colormap(jet(256));
 axis image;
 hold on;
-%plot(1:image_width,line_out,'r');
-title('絶対位相','Fontsize',16);
+title('プロジェクタのピクセル','Fontsize',16);
 set(gca,'FontSize',16);
 saveas(gcf,'unwrappedphase_1.fig')
 
 %%%%%%%%%%%%%%%%%%%%%位相接続時の基準(二次関数)とラップされた位相の差をプロット
-%%グラフ7
+%%グラフ8
 figure;
-plot(1:image_width,temp_out(line_out,:),'r');
+plot(1:image_width,temp_out(line_out,:),'r'); %二次関数とラップされた位相の差
 hold on;
-plot(1:image_width,index(line_out,:),'g');
+plot(1:image_width,index(line_out,:),'g'); %二次関数とラップされた位相の差を丸めたもの（位相接続におけるk）
 hold on;
 plot(1:image_width,theta(line_out,:));
 xlim([0,image_width]);
@@ -158,7 +159,7 @@ title(['index',num2str(line_out)],'Fontsize',16);
 saveas(gcf,['index_',num2str(line_out),'.fig'])
 
 %%%%%%%%%%%%%%%%%%%%%プロジェクタのピクセルをプロット
-%%グラフ8
+%%グラフ9
 figure
 plot(1:image_width,pixel(line_out,:));
 title('プロジェクタピクセル','Fontsize',16);
@@ -169,4 +170,4 @@ set(gca,'FontSize',16);
 saveas(gcf,['pixel_info',num2str(line_out),'.fig'])
 
 
-cd('C:\Users\t2ladmin\Documents\MATLAB\phase shift');
+cd('C:\Users\k2vision\Desktop\maruyama\3d_measurement');

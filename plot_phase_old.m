@@ -5,17 +5,17 @@ function [p,theta,differ_raw,line_out,name] = plot_phase_old(name,line_out)
     %%%%%%%%%%
     %%%%%%%%%%
     
-    folder_name = 'C:\Users\t2ladmin\Documents\MATLAB\phase shift\phase_image';
+    folder_name = 'C:\Users\k2vision\Desktop\maruyama\3d_measurement\phase_image';
     file_name = [folder_name, '\', name];
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%フォルダ内に移動し，画像のみを読み込み
     cd(file_name);
-    imgFileList = dir('*.png');  %%読み込む画像はtifかpngなのでそのつど書き換えが必要
+    imgFileList = dir('*.bmp');  %%読み込む画像はtifかpngなのでそのつど書き換えが必要
     imgFileList.name
     
     num = length(imgFileList); %画像の数
-    image_width = 512; %カメラのピクセル数(x方向)
-    image_height = 512; %カメラのピクセル数(y方向)
+    image_width = 400; %カメラのピクセル数(x方向)
+    image_height = 300; %カメラのピクセル数(y方向)
     pixel = image_width * image_height; %カメラの全ピクセル数
     Luminance = zeros(pixel,num); %全画像，全ピクセルの輝度を格納する行列
 
@@ -56,9 +56,8 @@ function [p,theta,differ_raw,line_out,name] = plot_phase_old(name,line_out)
         end
     end
     
+    
     theta = reshape(theta,[image_height image_width]); %-piからpiの範囲で位相を求める
-    medfilt = [5 5];
-    theta = medfilt2(theta, medfilt);
 
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%位相の計算終了
@@ -68,7 +67,7 @@ function [p,theta,differ_raw,line_out,name] = plot_phase_old(name,line_out)
     differ = zeros(image_height,image_width-1); %thetaの差（x方向の微分）を格納
     differ_raw = zeros(image_height,image_width-1); %thetaの差（x方向の微分）の生データを格納
     p = zeros(image_height,2); %thetaの微分の回帰を行ごとに格納
-    cd('C:\Users\t2ladmin\Documents\MATLAB\phase shift');
+    
     for line = 1:image_height
         %位相の空間方向の微分を計算        
         differ_raw(line,:) = diff(theta(line,:));
@@ -118,12 +117,16 @@ function [p,theta,differ_raw,line_out,name] = plot_phase_old(name,line_out)
     %%%%%%輝度をプロット，sin波になってればOK
     %グラフ2
     figure;
-    sin_wave = reshape(Luminance(2,:), [image_height image_width]);
-    plot(1:image_width,sin_wave(line_out,:));
-    title(['輝度',num2str(line_out)],'FontSize',16);
-    xlim([0,image_width]);
-    ylim([0,256]);
-    set(gca,'FontSize',16);
+    color = ['r','g','b'];
+    for i = 1:3
+        sin_wave = reshape(Luminance(i,:), [image_height image_width]);
+        plot(1:image_width,sin_wave(line_out,:),color(i));
+        title(['輝度',num2str(line_out)],'FontSize',16);
+        xlim([0,image_width]);
+        ylim([0,256]);
+        set(gca,'FontSize',16);
+        hold on;
+    end
     saveas(gcf,['I_',num2str(line_out),'.fig'])
   
     
@@ -139,6 +142,7 @@ function [p,theta,differ_raw,line_out,name] = plot_phase_old(name,line_out)
     set(gca,'FontSize',16);
     saveas(gcf,'phasemap.fig')
    
+    %グラフ4
     figure;
     plot(1:image_width-1,differ(line_out,:));
     hold on
@@ -149,5 +153,5 @@ function [p,theta,differ_raw,line_out,name] = plot_phase_old(name,line_out)
     set(gca,'FontSize',16);
 
     %%元のディレクトリに戻る
-    cd('C:\Users\t2ladmin\Documents\MATLAB\phase shift');
+     cd('C:\Users\k2vision\Desktop\maruyama\3d_measurement');
 end
